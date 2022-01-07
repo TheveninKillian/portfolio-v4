@@ -1,0 +1,92 @@
+:root{
+  --color-text: #fff;
+  --color-background: #1D1E21;
+  --color-top: #41B883;
+
+  --h1-mobile: 30px;
+  --h1-tablet: 45px;
+  --h1-desktop: 60px;
+
+  --h2-mobile: 24px;
+  --h2-tablet: 30px;
+  --h2-desktop: 44px;
+
+  --h3-mobile: 18px;
+  --h3-tablet: 24px;
+  --h3-desktop: 28px;
+
+  --text-mobile: 14px;
+  --text-tablet: 15px;
+  --text-desktop: 16px;
+
+  --max-width: 1200px:
+  --marge-auto: auto; 
+  --marge-all-min: 15px;
+  --marge-all-max: 30px;
+  --marge-section-min: 30px;
+  --marge-section-max: 60px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body{
+  font-family: "Poppins",sans-serif;
+}
+
+h1{
+  font-size: var(--h1-mobile);
+  font-weight: 500;
+}
+
+h2{
+  font-size: var(--h2-mobile);
+  font-weight: 500;
+}
+
+h3{
+  font-size: var(--h3-mobile);
+  font-weight: 500;
+}
+
+@media screen and (min-width: 576px) {}
+
+@media screen and (min-width: 768px) {
+  h1{
+    font-size: var(--h1-tablet);
+  }
+
+  h2{
+    font-size: var(--h2-tablet);
+  }
+  
+  h3{
+    font-size: var(--h3-tablet);
+  }
+}
+
+@media screen and (min-width: 992px) {}
+
+@media screen and (min-width: 1200px) {
+  h1{
+    font-size: var(--h1-desktop);
+  }
+
+  h2{
+    font-size: var(--h2-desktop);
+  }
+  
+  h3{
+    font-size: var(--h3-desktop);
+  }
+}
+
+@media screen and (min-width: 1680px) {}
