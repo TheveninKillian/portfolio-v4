@@ -16,6 +16,20 @@ body{
   font-family: "Poppins",sans-serif;
 }
 
+#app{
+  @include breakpoint(lg){
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include breakpoint(xl){
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 main {
   padding-left: $marge-all-min;
   padding-right: $marge-all-min;
