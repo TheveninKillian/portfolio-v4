@@ -3,13 +3,17 @@
 <template>
   <div>
     <div i-carbon-campsite text-4xl inline-block />
-    <p>
+    <h1>
       <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">
         Vitesse Lite
       </a>
-    </p>
+    </h1>
     <p>
       <em text-sm op75>Opinionated Vite Starter Template</em>
     </p>
+
+    <button>
+      Test
+    </button>
   </div>
 </template>

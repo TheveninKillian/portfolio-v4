@@ -1,14 +1,72 @@
-* {
-  margin: 0;
-  padding: 0;
-}
+@import './variables.scss';
+@import './mixins.scss';
+@import './reset.scss';
+@import './normalize.scss';
 
 html,
 body,
 #app {
   height: 100%;
+
+  background-color: $color-background;
+  color: $color-text;
 }
 
-html.dark {
-  background: #121212;
+body{
+  font-family: "Poppins",sans-serif;
+}
+
+#app{
+  @include breakpoint(lg){
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include breakpoint(xl){
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+main {
+  padding-left: $marge-all-min;
+  padding-right: $marge-all-min;
+}
+
+h1{
+  font-size: $h1-mobile;
+  font-weight: 500;
+
+  @include breakpoint(sm){
+    font-size: $h1-tablet;
+  }
+  @include breakpoint(lg){
+    font-size: $h1-desktop;
+  }
+}
+
+h2{
+  font-size: $h2-mobile;
+  font-weight: 500;
+
+  @include breakpoint(sm){
+    font-size: $h2-tablet;
+  }
+  @include breakpoint(lg){
+    font-size: $h2-desktop;
+  }
+}
+
+h3{
+  font-size: $h3-mobile;
+  font-weight: 500;
+
+  @include breakpoint(sm){
+    font-size: $h3-tablet;
+  }
+  @include breakpoint(lg){
+    font-size: $h3-desktop;
+  }
 }
