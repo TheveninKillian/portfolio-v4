@@ -112,6 +112,12 @@ header{
       a{
         color: $color-text;
         text-decoration: none;
+
+        transition: color .5s;
+
+        &:hover{
+          color: $color-top;
+        }
       }
 
       .router-link-active{
