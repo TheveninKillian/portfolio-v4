@@ -7,6 +7,7 @@ import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import Icons from 'unplugin-icons/vite'
 
 export default defineConfig({
   resolve: {
@@ -34,6 +35,8 @@ export default defineConfig({
     Components({
       dts: true,
     }),
+
+    Icons(),
   ],
 
   optimizeDeps: {
