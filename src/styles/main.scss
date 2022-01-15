@@ -33,6 +33,21 @@ body{
 main {
   padding-left: $marge-all-min;
   padding-right: $marge-all-min;
+
+  @include breakpoint(sm){
+    padding-left: $marge-all-max;
+    padding-right: $marge-all-max;
+  }
+}
+
+section{
+  padding-top: $marge-section-min;
+  padding-bottom: $marge-section-min;
+
+  @include breakpoint(lg){
+    padding-top: $marge-section-max;
+    padding-bottom: $marge-section-max;
+  }
 }
 
 h1{
@@ -68,6 +83,28 @@ h3{
   }
   @include breakpoint(lg){
     font-size: $h3-desktop;
+  }
+}
+
+button{
+  display: flex;
+  align-items: center;
+
+  padding: 5px 10px;
+
+  background-color: #29292C;
+  border: none;
+  color: $color-text;
+
+  font-size: $text-mobile;
+
+  cursor: pointer;
+
+  @include breakpoint(sm){
+    font-size: $text-tablet;
+  }
+  @include breakpoint(lg){
+    font-size: $text-desktop;
   }
 }
 
