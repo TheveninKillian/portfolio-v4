@@ -14,6 +14,29 @@ const { width } = useWindowSize()
 
     <button>Contactez moi <Icon icon="akar-icons:arrow-down" /></button>
   </section>
+
+  <hr>
+
+  <section class="about-skills">
+    <div class="about">
+      <h2>A propos de moi</h2>
+
+      <div class="about-wrapper">
+        <p>Développeur front-end autodidacte depuis 5 ans maintenant, je suis issus de formation OpenClassrooms et Freecodecamp. J'ai obtenu plusieurs certifications dans mon domaine.</p>
+        <p>Je suis spécialisé dans la création de site web et j'ai pour objectif de pouvoir réaliser des applications multiplateforme (mobile et desktop).</p>
+        <p>Mon but est de vous trouver une solution pour optimiser mon travail un maximum et rendre du contenu qualitatif.</p>
+        <p>Je réalise une veille constante sur les languages, librairies et outils de ma stack technique, ce qui fait que je suis à jour sur les nouveautés. Je suis aussi prêt à sortir de ma zone de confort et à apprendre de nouvelles choses.</p>
+      </div>
+    </div>
+
+    <div class="skills">
+      <h2>Mes compétences</h2>
+
+      <div class="skills-wrapper">
+        <div>1</div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
@@ -41,6 +64,55 @@ h1{
 button {
   svg{
     margin-left: 5px;
+  }
+}
+
+.about-skills{
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint(lg){
+    flex-direction: row;
+  }
+}
+
+.about{
+  @include breakpoint(lg){
+    margin-left: $marge-all-min;
+    margin-right: $marge-all-min;
+    width: 50%;
+  }
+
+  &-wrapper{
+    margin-top: $marge-all-min;
+    margin-bottom: $marge-all-min;
+
+    @include breakpoint(lg){
+      margin-top: $marge-all-max;
+      margin-bottom: $marge-all-max;
+    }
+
+    p{
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.skills{
+  @include breakpoint(lg){
+    margin-left: $marge-all-min;
+    margin-right: $marge-all-min;
+    width: 50%;
+  }
+
+  &-wrapper{
+    margin-top: $marge-all-min;
+    margin-bottom: $marge-all-min;
+
+    @include breakpoint(lg){
+      margin-top: $marge-all-max;
+      margin-bottom: $marge-all-max;
+    }
   }
 }
 </style>
