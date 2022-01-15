@@ -6,7 +6,6 @@ import { Icon } from '@iconify/vue'
 const { width } = useWindowSize()
 
 const navActive = ref(false)
-const borderSelected = ref('home')
 </script>
 
 <template>
@@ -14,20 +13,24 @@ const borderSelected = ref('home')
     <p>Killian Thevenin</p>
 
     <div class="naviguated">
-      <div v-if="width <= 1200">
+      <div v-if="width < 992">
         <Icon icon="ci:hamburger" @click="navActive = !navActive" />
       </div>
 
-      <nav :class="{ active: navActive }" @click="navActive = !navActive">
+      <transition name="fade">
+        <div v-if="navActive && width < 992" class="overlay" @click="navActive = !navActive" />
+      </transition>
+
+      <nav :class="{ active: navActive }">
         <ul>
-          <router-link to="/">
-            <li :class="{ activeBorder: borderSelected === 'home' }" @click="borderSelected = 'home'">
+          <router-link to="/" @click="navActive = !navActive">
+            <li>
               Accueil
             </li>
           </router-link>
 
-          <router-link to="/portfolio">
-            <li :class="{ activeBorder: borderSelected === 'portfolio' }" @click="borderSelected = 'portfolio'">
+          <router-link to="/portfolio" @click="navActive = !navActive">
+            <li>
               Portfolio
             </li>
           </router-link>
@@ -54,7 +57,7 @@ header{
 
   background-color: $color-background;
 
-  @include breakpoint(lg){
+  @include breakpoint(md){
     padding-top: $marge-all-max;
     padding-bottom: $marge-all-max;
   }
@@ -66,7 +69,7 @@ header{
     @include breakpoint(sm){
       font-size: $h3-tablet;
     }
-    @include breakpoint(lg){
+    @include breakpoint(md){
       font-size: $h3-desktop;
     }
   }
@@ -87,21 +90,27 @@ header{
     left: -100%;
 
     height: 100vh;
-    width: 100%;
+    width: 70%;
 
     transition: left .5s;
 
+    @include breakpoint(xs){
+        width: 30%;
+      }
+
+    @include breakpoint(md){
+      position: inherit;
+
+      height: auto;
+      width: auto;
+    }
+
     ul{
-      width: 70%;
       height: 100vh;
 
       background-color: $color-background;
 
-      @include breakpoint(sm){
-        width: 30%;
-      }
-
-      @include breakpoint(lg){
+      @include breakpoint(md){
         display: flex;
         align-items: center;
 
@@ -130,64 +139,27 @@ header{
         font-size: $h3-mobile;
         text-align: center;
 
-        @include breakpoint(lg){
+        @include breakpoint(md){
           margin-left: 15px;
-          padding: 10px;
+          padding: 0;
         }
       }
-
-      .activeBorder{
-        position: relative;
-
-        border: 2px solid $color-top;
-
-        &::before, &::after{
-          content: '';
-          position: absolute;
-          left: 50%;
-
-          height: 2px;
-          width: 50%;
-
-          transform: translateX(-50%);
-
-          background-color: $color-background;
-        }
-
-        &::before{
-          top: -2px;
-        }
-
-        &::after{
-          bottom: -2px;
-        }
-
-        @include breakpoint(lg){
-          border: none;
-
-          text-decoration: underline;
-
-          &::before, &::after{
-            display: none;
-          }
-        }
-      }
-    }
-
-    @include breakpoint(sm){
-      left: -30%;
-    }
-
-    @include breakpoint(lg){
-      position: inherit;
-
-      height: auto;
-      width: auto;
     }
 
     &.active{
       left: 0;
     }
   }
+}
+
+.overlay{
+  position: absolute;
+  top: 0;
+  left: -15px;
+
+  height: 100vh;
+  width: 100vw;
+
+  background-color: rgba(255, 255, 255, 0.1);
 }
 </style>
