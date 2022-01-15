@@ -4,7 +4,7 @@ import { Icon } from '@iconify/vue'
 
 const { width } = useWindowSize()
 
-const navActive = ref(false)
+const navActive = ref<Boolean>(false)
 </script>
 
 <template>
@@ -160,5 +160,9 @@ header{
   width: 100vw;
 
   background-color: rgba(255, 255, 255, 0.1);
+
+  @include breakpoint(sm){
+    left: -30px;
+  }
 }
 </style>
