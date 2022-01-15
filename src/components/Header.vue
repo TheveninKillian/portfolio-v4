@@ -1,4 +1,3 @@
-/* eslint-disable vue/html-self-closing */
 <script setup lang="ts">
 import { useWindowSize } from '@vueuse/core'
 import { Icon } from '@iconify/vue'
