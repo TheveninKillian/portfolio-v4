@@ -12,13 +12,12 @@ const navActive = ref<Boolean>(false)
     <p>Killian Thevenin</p>
 
     <div class="naviguated">
-      <div v-if="width < 992">
-        <Icon icon="ci:hamburger" @click="navActive = !navActive" />
+      <div v-if="width < 992" class="container-icon">
+        <transition name="turn">
+          <Icon v-if="!navActive" icon="ci:hamburger" @click="navActive = !navActive" />
+          <Icon v-else icon="gridicons:cross" @click="navActive = !navActive" />
+        </transition>
       </div>
-
-      <transition name="fade">
-        <div v-if="navActive && width < 992" class="overlay" @click="navActive = !navActive" />
-      </transition>
 
       <nav :class="{ active: navActive }">
         <ul>
@@ -75,37 +74,48 @@ header{
 }
 
 .naviguated{
-  svg{
-    font-size: $h2-mobile;
+  .container-icon{
+    position: relative;
 
-    @include breakpoint(sm){
-      font-size: $h2-tablet;
+    svg{
+      font-size: $h2-mobile;
+
+      @include breakpoint(sm){
+        font-size: $h2-tablet;
+      }
+
+      &:nth-child(2) {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
     }
   }
 
   nav{
     position: fixed;
-    top: 0;
-    left: -100%;
+    top: 58px;
+    left: 0;
 
-    height: 100vh;
-    width: 70%;
+    max-height: 0px;
+    width: 100%;
 
-    transition: left .5s;
+    border-bottom: 1px solid $color-top;
 
-    @include breakpoint(xs){
-        width: 30%;
-      }
+    overflow: hidden;
+    transition: all .5s;
 
     @include breakpoint(md){
       position: inherit;
 
-      height: auto;
+      max-height: inherit;
       width: auto;
+
+      border-bottom: none;
     }
 
     ul{
-      height: 100vh;
+      padding-bottom: 15px;
 
       background-color: $color-background;
 
@@ -113,7 +123,6 @@ header{
         display: flex;
         align-items: center;
 
-        height: auto;
         width: auto;
       }
 
@@ -133,36 +142,22 @@ header{
       }
 
       li{
-        padding: 20px 0;
+        margin-left: 15px;
+        padding: 5px 0;
 
-        font-size: $h3-mobile;
-        text-align: center;
+        font-size: $text-mobile;
 
         @include breakpoint(md){
-          margin-left: 15px;
           padding: 0;
+
+          font-size: $text-desktop;
         }
       }
     }
 
     &.active{
-      left: 0;
+      max-height: 100px;
     }
-  }
-}
-
-.overlay{
-  position: absolute;
-  top: 0;
-  left: -15px;
-
-  height: 100vh;
-  width: 100vw;
-
-  background-color: rgba(255, 255, 255, 0.1);
-
-  @include breakpoint(sm){
-    left: -30px;
   }
 }
 </style>
