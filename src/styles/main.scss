@@ -12,6 +12,10 @@ body,
   color: $color-text;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body{
   font-family: "Poppins",sans-serif;
 }
@@ -97,6 +101,10 @@ p{
   @include breakpoint(lg){
     font-size: $text-desktop;
   }
+}
+
+a{
+  text-decoration: none
 }
 
 button{

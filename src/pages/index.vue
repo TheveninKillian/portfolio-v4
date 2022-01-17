@@ -12,7 +12,9 @@ const { width } = useWindowSize()
       <img class="letter-img" src="https://res.cloudinary.com/dbfzyht7k/image/upload/v1636387765/gmn4cvujyng6ngm5oeei.png" alt="logo vue js">ue.js
     </h1>
 
-    <button>Contactez moi <Icon icon="akar-icons:arrow-down" /></button>
+    <a href="#contact">
+      <button>Contactez moi <Icon icon="akar-icons:arrow-down" /></button>
+    </a>
   </section>
 
   <hr>
@@ -97,7 +99,7 @@ const { width } = useWindowSize()
 
   <hr>
 
-  <section class="contact" data-aos="fade-up">
+  <section id="contact" class="contact" data-aos="fade-up">
     <h2>Contact</h2>
 
     <p>Merci de donner un maximum de détail sur le projet afin que je puisse évaluer correctement la charge de travail qu'il représente.</p>
