@@ -6,7 +6,7 @@ const { width } = useWindowSize()
 </script>
 
 <template>
-  <section>
+  <section data-aos="fade-down">
     <h1>
       Développeur front-end,<br v-if="width < 500">
       <img class="letter-img" src="https://res.cloudinary.com/dbfzyht7k/image/upload/v1636387765/gmn4cvujyng6ngm5oeei.png" alt="logo vue js">ue.js
@@ -18,7 +18,7 @@ const { width } = useWindowSize()
   <hr>
 
   <section class="about-skills">
-    <div class="about">
+    <div class="about" data-aos="fade-right">
       <h2>A propos de moi</h2>
 
       <div class="about-wrapper">
@@ -30,7 +30,7 @@ const { width } = useWindowSize()
       </div>
     </div>
 
-    <div class="skills">
+    <div class="skills" data-aos="fade-left">
       <h2>Mes compétences</h2>
 
       <div class="skills-container">
@@ -97,7 +97,7 @@ const { width } = useWindowSize()
 
   <hr>
 
-  <section class="contact">
+  <section class="contact" data-aos="fade-up">
     <h2>Contact</h2>
 
     <p>Merci de donner un maximum de détail sur le projet afin que je puisse évaluer correctement la charge de travail qu'il représente.</p>
