@@ -1,12 +1,10 @@
-/* eslint-disable vue/html-self-closing */
 <script setup lang="ts">
 import { useWindowSize } from '@vueuse/core'
 import { Icon } from '@iconify/vue'
 
 const { width } = useWindowSize()
 
-const navActive = ref(false)
-const borderSelected = ref('home')
+const navActive = ref<Boolean>(false)
 </script>
 
 <template>
@@ -14,20 +12,23 @@ const borderSelected = ref('home')
     <p>Killian Thevenin</p>
 
     <div class="naviguated">
-      <div v-if="width <= 1200">
-        <Icon icon="ci:hamburger" @click="navActive = !navActive" />
+      <div v-if="width < 992" class="container-icon">
+        <transition name="turn">
+          <Icon v-if="!navActive" icon="ci:hamburger" @click="navActive = !navActive" />
+          <Icon v-else icon="gridicons:cross" @click="navActive = !navActive" />
+        </transition>
       </div>
 
-      <nav :class="{ active: navActive }" @click="navActive = !navActive">
+      <nav :class="{ active: navActive }">
         <ul>
-          <router-link to="/">
-            <li :class="{ activeBorder: borderSelected === 'home' }" @click="borderSelected = 'home'">
+          <router-link to="/" @click="navActive = !navActive">
+            <li>
               Accueil
             </li>
           </router-link>
 
-          <router-link to="/portfolio">
-            <li :class="{ activeBorder: borderSelected === 'portfolio' }" @click="borderSelected = 'portfolio'">
+          <router-link to="/portfolio" @click="navActive = !navActive">
+            <li>
               Portfolio
             </li>
           </router-link>
@@ -54,7 +55,7 @@ header{
 
   background-color: $color-background;
 
-  @include breakpoint(lg){
+  @include breakpoint(md){
     padding-top: $marge-all-max;
     padding-bottom: $marge-all-max;
   }
@@ -66,46 +67,62 @@ header{
     @include breakpoint(sm){
       font-size: $h3-tablet;
     }
-    @include breakpoint(lg){
+    @include breakpoint(md){
       font-size: $h3-desktop;
     }
   }
 }
 
 .naviguated{
-  svg{
-    font-size: $h2-mobile;
+  .container-icon{
+    position: relative;
 
-    @include breakpoint(sm){
-      font-size: $h2-tablet;
+    svg{
+      font-size: $h2-mobile;
+
+      @include breakpoint(sm){
+        font-size: $h2-tablet;
+      }
+
+      &:nth-child(2) {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
     }
   }
 
   nav{
     position: fixed;
-    top: 0;
-    left: -100%;
+    top: 58px;
+    left: 0;
 
-    height: 100vh;
+    max-height: 0px;
     width: 100%;
 
-    transition: left .5s;
+    border-bottom: 1px solid $color-top;
+
+    overflow: hidden;
+    transition: all .5s;
+
+    @include breakpoint(md){
+      position: inherit;
+
+      max-height: inherit;
+      width: auto;
+
+      border-bottom: none;
+    }
 
     ul{
-      width: 70%;
-      height: 100vh;
+      padding-bottom: 15px;
 
       background-color: $color-background;
 
-      @include breakpoint(sm){
-        width: 30%;
-      }
-
-      @include breakpoint(lg){
+      @include breakpoint(md){
         display: flex;
         align-items: center;
 
-        height: auto;
         width: auto;
       }
 
@@ -125,68 +142,21 @@ header{
       }
 
       li{
-        padding: 20px 0;
+        margin-left: 15px;
+        padding: 5px 0;
 
-        font-size: $h3-mobile;
-        text-align: center;
+        font-size: $text-mobile;
 
-        @include breakpoint(lg){
-          margin-left: 15px;
-          padding: 10px;
+        @include breakpoint(md){
+          padding: 0;
+
+          font-size: $text-desktop;
         }
       }
-
-      .activeBorder{
-        position: relative;
-
-        border: 2px solid $color-top;
-
-        &::before, &::after{
-          content: '';
-          position: absolute;
-          left: 50%;
-
-          height: 2px;
-          width: 50%;
-
-          transform: translateX(-50%);
-
-          background-color: $color-background;
-        }
-
-        &::before{
-          top: -2px;
-        }
-
-        &::after{
-          bottom: -2px;
-        }
-
-        @include breakpoint(lg){
-          border: none;
-
-          text-decoration: underline;
-
-          &::before, &::after{
-            display: none;
-          }
-        }
-      }
-    }
-
-    @include breakpoint(sm){
-      left: -30%;
-    }
-
-    @include breakpoint(lg){
-      position: inherit;
-
-      height: auto;
-      width: auto;
     }
 
     &.active{
-      left: 0;
+      max-height: 100px;
     }
   }
 }
