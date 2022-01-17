@@ -12,9 +12,11 @@ const { width } = useWindowSize()
       <img class="letter-img" src="https://res.cloudinary.com/dbfzyht7k/image/upload/v1636387765/gmn4cvujyng6ngm5oeei.png" alt="logo vue js">ue.js
     </h1>
 
-    <a href="#contact">
-      <button>Contactez moi <Icon icon="akar-icons:arrow-down" /></button>
-    </a>
+    <button>
+      <a href="#contact">
+        Contactez moi <Icon icon="akar-icons:arrow-down" />
+      </a>
+    </button>
   </section>
 
   <hr>
@@ -173,6 +175,14 @@ h1{
 }
 
 button {
+
+  a{
+    display: flex;
+    align-items: center;
+
+    color: $color-text;
+  }
+
   svg{
     margin-left: 5px;
   }
