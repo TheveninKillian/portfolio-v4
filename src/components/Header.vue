@@ -55,6 +55,8 @@ header{
 
   background-color: $color-background;
 
+  z-index: 100;
+
   @include breakpoint(md){
     padding-top: $marge-all-max;
     padding-bottom: $marge-all-max;
