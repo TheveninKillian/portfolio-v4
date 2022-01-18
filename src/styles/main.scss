@@ -12,6 +12,10 @@ body,
   color: $color-text;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body{
   font-family: "Poppins",sans-serif;
 }
@@ -23,10 +27,12 @@ body{
     margin-right: auto;
   }
 
+  @include breakpoint(1440){
+    max-width: 1400px;
+  }
+
   @include breakpoint(xl){
     max-width: 1600px;
-    margin-left: auto;
-    margin-right: auto;
   }
 }
 
@@ -99,10 +105,11 @@ p{
   }
 }
 
-button{
-  display: flex;
-  align-items: center;
+a{
+  text-decoration: none
+}
 
+button{
   padding: 5px 10px;
 
   background-color: #29292C;
