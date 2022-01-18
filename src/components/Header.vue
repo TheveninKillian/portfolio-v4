@@ -147,7 +147,7 @@ header{
         margin-left: 15px;
         padding: 5px 0;
 
-        font-size: $text-mobile;
+        font-size: $text-tablet;
 
         @include breakpoint(md){
           padding: 0;

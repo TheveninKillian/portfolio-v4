@@ -17,7 +17,7 @@ const randomPosition = (max: number): string => {
     </h1>
 
     <div class="portfolio-grid">
-      <div v-for="(item, key) in json.portfolio" :key="item.name" class="portfolio-grid__wrapper" data-aos="flip-left" :data-aos-delay="key * 200">
+      <div v-for="(item, key) in json.portfolio" :key="item.name" class="portfolio-grid__wrapper" data-aos="flip-left" :data-aos-delay="key * 100">
         <a :href="item.link">
           <div class="content">
             <img :src="item.img" :alt="`Image du projet ${item.name}`">

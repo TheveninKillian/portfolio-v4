@@ -95,11 +95,8 @@ h3{
 }
 
 p{
-  font-size: $text-mobile;
+  font-size: $text-tablet;
 
-  @include breakpoint(sm){
-    font-size: $text-tablet;
-  }
   @include breakpoint(lg){
     font-size: $text-desktop;
   }
@@ -116,7 +113,7 @@ button{
   border: none;
   color: $color-text;
 
-  font-size: $text-mobile;
+  font-size: $text-tablet;
 
   cursor: pointer;
 
