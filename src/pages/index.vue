@@ -44,18 +44,22 @@ const { width } = useWindowSize()
           <ul class="skills-wrapper">
             <li>
               <Icon icon="vscode-icons:file-type-html" />
+              <span>HTML</span>
             </li>
 
             <li>
               <Icon icon="vscode-icons:file-type-css" />
+              <span>CSS</span>
             </li>
 
             <li>
               <Icon icon="logos:javascript" />
+              <span>Javascript</span>
             </li>
 
             <li>
               <Icon icon="logos:typescript-icon" />
+              <span>Typescript</span>
             </li>
           </ul>
         </div>
@@ -66,18 +70,27 @@ const { width } = useWindowSize()
           <ul class="skills-wrapper">
             <li>
               <Icon icon="logos:vue" />
+              <span>Vue</span>
+            </li>
+
+            <li>
+              <Icon icon="logos:sass" />
+              <span>SASS</span>
             </li>
 
             <li>
               <Icon icon="logos:git-icon" />
+              <span>Git</span>
             </li>
 
             <li>
               <Icon icon="logos:vitejs" />
+              <span>Vite</span>
             </li>
 
             <li>
               <Icon icon="codicon:terminal-cmd" color="white" />
+              <span>CMD</span>
             </li>
           </ul>
         </div>
@@ -88,10 +101,12 @@ const { width } = useWindowSize()
           <ul class="skills-wrapper">
             <li>
               <Icon icon="grommet-icons:figma" />
+              <span>Figma</span>
             </li>
 
             <li>
               <Icon icon="vscode-icons:file-type-photoshop" />
+              <span>Photoshop</span>
             </li>
           </ul>
         </div>
@@ -103,8 +118,6 @@ const { width } = useWindowSize()
 
   <section id="contact" class="contact" data-aos="fade-up">
     <h2>Contact</h2>
-
-    <p>Merci de donner un maximum de détail sur le projet afin que je puisse évaluer correctement la charge de travail qu'il représente.</p>
 
     <form
       name="contact"
@@ -224,6 +237,7 @@ button {
 .skills{
   &-container{
     display: grid;
+    grid-template-columns: 1fr;
     grid-gap: 15px;
 
     margin-top: $marge-all-min;
@@ -247,12 +261,23 @@ button {
       text-align: center;
 
       &:nth-child(1){
-        grid-column: 1 / 3;
+        grid-column: 1;
+
+        @include breakpoint(sm){
+          grid-column: 1 / 3;
+        }
       }
 
-      &:nth-child(2),
-      &:nth-child(3){
+      &:nth-child(2){
         grid-row: 2;
+      }
+
+      &:nth-child(3){
+        grid-row: 3;
+
+        @include breakpoint(sm){
+          grid-row: 2;
+        }
       }
     }
 
@@ -266,18 +291,28 @@ button {
     justify-content: center;
 
     li{
-      margin: 0 15px
-    }
+      display: flex;
+      align-items: center;
+      flex-direction: column;
 
-    svg{
-      font-size: $h2-mobile;
+      margin: 0 10px;
 
-      @include breakpoint(sm){
-        font-size: $h2-tablet;
+      svg{
+        margin-bottom: 5px;
+
+        font-size: $h2-mobile;
+
+        @include breakpoint(sm){
+          font-size: $h2-tablet;
+        }
+
+        @include breakpoint(lg){
+          font-size: $h2-desktop;
+        }
       }
 
-      @include breakpoint(lg){
-        font-size: $h2-desktop;
+      span{
+        font-size: 12px;
       }
     }
   }
@@ -287,11 +322,8 @@ button {
   margin: auto;
   max-width: 600px;
 
-  p{
+  h2{
     margin-bottom: $marge-all-min;
-    margin-top: $marge-all-max;
-
-    text-align: center;
 
     @include breakpoint(lg){
       margin-bottom: $marge-all-max;
