@@ -34,11 +34,11 @@ const { width } = useWindowSize()
       </div>
     </div>
 
-    <div class="skills" data-aos="fade-left">
+    <div class="skills">
       <h2>Mes compétences</h2>
 
       <div class="skills-container">
-        <div>
+        <div data-aos="flip-down">
           <h3>La base du développement front-end</h3>
 
           <ul class="skills-wrapper">
@@ -64,7 +64,7 @@ const { width } = useWindowSize()
           </ul>
         </div>
 
-        <div>
+        <div data-aos="flip-down">
           <h3>Framework et outils</h3>
 
           <ul class="skills-wrapper">
@@ -95,7 +95,7 @@ const { width } = useWindowSize()
           </ul>
         </div>
 
-        <div>
+        <div data-aos="flip-down">
           <h3>Design</h3>
 
           <ul class="skills-wrapper">
