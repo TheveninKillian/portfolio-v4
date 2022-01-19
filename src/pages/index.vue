@@ -300,11 +300,7 @@ button {
       svg{
         margin-bottom: 5px;
 
-        font-size: $h2-mobile;
-
-        @include breakpoint(sm){
-          font-size: $h2-tablet;
-        }
+        font-size: $h2-tablet;
 
         @include breakpoint(lg){
           font-size: $h2-desktop;
