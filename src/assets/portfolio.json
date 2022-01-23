@@ -1,43 +1,58 @@
 {
   "portfolio": [
     {
-      "color": "#fff",
+      "color": {
+        "background": "#fff",
+        "text": "#1D1E21"
+      },
       "img": "https://res.cloudinary.com/dbfzyht7k/image/upload/v1642510777/square-todo.jpg",
       "link": "https://challenges-killian.vercel.app/Todo/index.html",
       "name": "Todo",
-      "technology": "HTML, CSS, Javascript",
+      "technology": "HTML / CSS / Javascript",
       "type": "Challenge"
     },
     {
-      "color": "#F0EEEB",
+      "color": {
+        "background": "#F0EEEB",
+        "text": "#1D1E21"
+      },
       "img": "https://res.cloudinary.com/dbfzyht7k/image/upload/v1642510777/square-landing.jpg",
       "link": "https://challenges-killian.vercel.app/landing-page/dist/index.html",
       "name": "Landing Page",
-      "technology": "Vue, Typescript, SASS, Vite, WindiCSS",
+      "technology": "Vue / Typescript / SASS / Vite / WindiCSS",
       "type": "Challenge"
     },
     {
-      "color": "#2E3552",
+      "color": {
+        "background": "#2E3552",
+        "text": "#fff"
+      },
       "img": "https://res.cloudinary.com/dbfzyht7k/image/upload/v1642510777/square-dashboard.jpg",
       "link": "https://challenges-killian.vercel.app/Dashboard/dist/index.html",
       "name": "Dashboard",
-      "technology": "Vue, SASS",
+      "technology": "Vue / SASS",
       "type": "Challenge"
     },
     {
-      "color": "#3AC7CA",
+      "color": {
+        "background": "#3AC7CA",
+        "text": "#1D1E21"
+      },
       "img": "https://res.cloudinary.com/dbfzyht7k/image/upload/v1642510777/square-stream.jpg",
       "link": "https://streamweb.netlify.app/",
       "name": "Streamweb",
-      "technology": "Vue, SASS, Twitch API",
+      "technology": "Vue / SASS / Twitch API",
       "type": "Site web personnel"
     },
     {
-      "color": "#FBDA01",
+      "color": {
+        "background": "#FBDA01",
+        "text": "#1D1E21"
+      },
       "img": "https://res.cloudinary.com/dbfzyht7k/image/upload/v1642510777/square-akaruu.jpg",
       "link": "https://chrome.google.com/webstore/detail/akaruu/ggnddmahllpbohpjficfmlkkeapdicdg?hl=fr",
       "name": "Akaruu",
-      "technology": "HTML, CSS , Javascript, Chrome API",
+      "technology": "HTML / CSS  / Javascript / Chrome API",
       "type": "Extension professionnel"
     }
   ]
