@@ -181,6 +181,10 @@ h1{
     font-size: $text-mobile;
 
     transform: translateX(-50%);
+
+    @include breakpoint(lg){
+      font-size: $text-tablet;
+    }
   }
 }
 </style>
