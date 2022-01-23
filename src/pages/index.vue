@@ -256,7 +256,7 @@ button {
       padding: 15px 0;
 
       border: 2px solid $color-top;
-      border-radius: 5px;
+      border-radius: 10px;
 
       text-align: center;
 

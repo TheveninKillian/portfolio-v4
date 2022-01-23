@@ -23,10 +23,14 @@ const randomPosition = (max: number): string => {
             <img :src="item.img" :alt="`Image du projet ${item.name}`">
           </div>
 
-          <div class="sub-content" :class="randomPosition(4)" :style="{background: item.color}">
-            <h3>{{ item.name }}</h3>
-            <span>{{ item.type }}</span>
-            <p>{{ item.technology }}</p>
+          <div class="sub-content" :class="randomPosition(4)">
+            <div class="sub-content__back" :style="{background: item.color.background}" />
+
+            <div class="sub-content__infos" :style="{color: item.color.text}">
+              <h3>{{ item.name }}</h3>
+              <span>{{ item.type }}</span>
+              <p>{{ item.technology }}</p>
+            </div>
           </div>
         </a>
       </div>
@@ -46,11 +50,15 @@ h1{
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 15px;
 
+  @include breakpoint(xs){
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   @include breakpoint(sm){
     grid-template-columns: repeat(4, 1fr);
   }
 
-  @include breakpoint(md){
+  @include breakpoint(lg){
     grid-template-columns: repeat(6, 1fr);
   }
 
@@ -58,6 +66,7 @@ h1{
     position: relative;
 
     border: 1px solid $color-top;
+    border-radius: 10px;
 
     overflow: hidden;
 
@@ -115,21 +124,20 @@ h1{
       bottom: 0;
     }
   }
-}
 
-.content{
-  position: absolute;
-  top: 0;
-  left: 0;
+  .content{
+    position: absolute;
+    top: 0;
+    left: 0;
 
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .sub-content{
   position: absolute;
 
-  padding: 20px 10px;
   width: 100%;
   height: 100%;
 
@@ -137,8 +145,30 @@ h1{
 
   transition: all .5s;
 
+  &__back,
+  &__infos{
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  &__back{
+    opacity: .9;
+  }
+
+  &__infos{
+    padding: 20px 0;
+
+    text-align: center;
+  }
+
   span{
-    font-size: $text-mobile;
+    font-size: 12px;
+
+    @include breakpoint(xs){
+      font-size: $text-mobile;
+    }
   }
 
   p{
@@ -147,6 +177,8 @@ h1{
     left: 50%;
 
     width: 100%;
+
+    font-size: $text-mobile;
 
     transform: translateX(-50%);
   }
