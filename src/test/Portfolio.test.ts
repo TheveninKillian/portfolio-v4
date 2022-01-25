@@ -1,11 +1,7 @@
-const position: string[] = ['left', 'top', 'right', 'bottom']
+import { mount } from '@vue/test-utils'
+import Portfolio from '../pages/Portfolio.vue'
 
-const randomPosition = (max: number) => {
-  const randomize: number = Math.floor(Math.random() * max)
-  const positionName: string = position[randomize]
-  return positionName
-}
-
-test('mount component', () => {
-  expect(randomPosition(4)).toMatch(/left|top|right|bottom/)
+test('mount Portfolio', () => {
+  const wrapper = mount(Portfolio)
+  expect(wrapper.vm.randomPosition()).toMatch(/left|top|right|bottom/)
 })
