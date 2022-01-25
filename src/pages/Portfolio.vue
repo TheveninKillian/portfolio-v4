@@ -18,21 +18,33 @@ const randomPosition = (max: number): string => {
 
     <div class="portfolio-grid">
       <div v-for="(item, key) in json.portfolio" :key="item.name" class="portfolio-grid__wrapper" data-aos="flip-left" :data-aos-delay="key * 100">
-        <a :href="item.link">
-          <div class="content">
-            <img :src="item.img" :alt="`Image du projet ${item.name}`">
-          </div>
+        <div class="details">
+          <h2>{{ item.name }}</h2>
 
-          <div class="sub-content" :class="randomPosition(4)">
-            <div class="sub-content__back" :style="{background: item.color.background}" />
+          <p class="details-text">
+            {{ item.description }}
+          </p>
 
-            <div class="sub-content__infos" :style="{color: item.color.text}">
-              <h3>{{ item.name }}</h3>
-              <span>{{ item.type }}</span>
-              <p>{{ item.technology }}</p>
+          <p>
+            <span>Tech:</span> {{ item.technology }}
+          </p>
+        </div>
+
+        <div class="content">
+          <a :href="item.link">
+            <div class="content-img">
+              <img :src="item.img" :alt="`Image du projet ${item.name}`">
             </div>
-          </div>
-        </a>
+
+            <div class="content-sub" :class="randomPosition(4)">
+              <div class="content-sub__back" :style="{background: item.color.background}" />
+
+              <div class="content-sub__infos" :style="{color: item.color.text}">
+                Ouvrir
+              </div>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -45,151 +57,157 @@ const randomPosition = (max: number): string => {
 h1{
   margin-bottom: 30px;
 }
+
+h2, span{
+  color: $color-top;
+  text-decoration: none;
+}
 .portfolio-grid{
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 15px;
-
-  @include breakpoint(xs){
-    grid-template-columns: repeat(3, 1fr);
-  }
+  grid-template-columns: 1fr;
+  grid-gap: 50px;
 
   @include breakpoint(sm){
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  @include breakpoint(lg){
-    grid-template-columns: repeat(6, 1fr);
+  @include breakpoint(1440){
+    grid-template-columns: repeat(3, 1fr);
   }
 
   &__wrapper{
     position: relative;
 
-    border: 1px solid $color-top;
-    border-radius: 10px;
-
     overflow: hidden;
-
-    &::after{
-      content: "";
-      display: block;
-      padding-bottom: 100%;
-    }
 
     a{
       color: #000;
     }
+  }
 
-    .sub-content.left{
-      top: 0;
-      left: -100%;
+  .details{
+    &-text{
+      display: flex;
+      align-items: center;
 
-      transition: left 0.5s;
-    }
-
-    .sub-content.top{
-      top: -100%;
-      left: 0;
-
-      transition: top 0.5s;
-    }
-
-    .sub-content.right{
-      top: 0;
-      right: -100%;
-
-      transition: right 0.5s;
-    }
-
-    .sub-content.bottom{
-      bottom: -100%;
-      left: 0;
-
-      transition: bottom 0.5s;
-    }
-
-    &:hover .content{
-      filter: blur(1px);
-    }
-
-    &:hover .sub-content.left{
-      left: 0;
-    }
-
-    &:hover .sub-content.top{
-      top: 0;
-    }
-
-    &:hover .sub-content.right{
-      right: 0;
-    }
-
-    &:hover .sub-content.bottom{
-      bottom: 0;
+      height: 100px;
     }
   }
 
   .content{
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
 
-    width: 100%;
-    height: 100%;
+    height: 300px;
+    margin: 25px auto 0;
+    width: 300px;
 
-    transition: all .5s;
-  }
-}
+    border: 2px solid $color-top;
+    border-radius: 10px;
 
-.sub-content{
-  position: absolute;
+    overflow: hidden;
 
-  width: 100%;
-  height: 100%;
-
-  text-align: center;
-
-  transition: all .5s;
-
-  &__back,
-  &__infos{
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-  }
-
-  &__back{
-    opacity: .9;
-  }
-
-  &__infos{
-    padding: 20px 0;
-
-    text-align: center;
-  }
-
-  span{
-    font-size: 12px;
-
-    @include breakpoint(xs){
-      font-size: $text-mobile;
+    &:hover .content-img img{
+      filter: blur(1px);
     }
-  }
 
-  p{
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
+    &:hover .left{
+      left: 0;
+    }
 
-    width: 100%;
+    &:hover .top{
+      top: 0;
+    }
 
-    font-size: $text-mobile;
+    &:hover .right{
+      right: 0;
+    }
 
-    transform: translateX(-50%);
+    &:hover .bottom{
+      bottom: 0;
+    }
 
-    @include breakpoint(lg){
-      font-size: $text-tablet;
+    &-img{
+      img{
+        width: 100%;
+
+        transition: all .5s;
+      }
+    }
+
+    &-sub{
+      position: absolute;
+
+      width: 100%;
+      height: 100%;
+
+      text-align: center;
+
+      transition: all .5s;
+
+      &.left{
+        top: 0;
+        left: -100%;
+      }
+
+      &.top{
+        top: -100%;
+        left: 0;
+      }
+
+      &.right{
+        top: 0;
+        right: -100%;
+      }
+
+      &.bottom{
+        bottom: -100%;
+        left: 0;
+      }
+
+      &__back,
+      &__infos{
+        position: absolute;
+
+        width: 100%;
+        height: 100%;
+      }
+
+      &__back{
+        opacity: .9;
+      }
+
+      &__infos{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 28px;
+        text-align: center;
+      }
+
+      span{
+        font-size: 12px;
+
+        @include breakpoint(xs){
+          font-size: $text-mobile;
+        }
+      }
+
+      p{
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+
+        width: 100%;
+
+        font-size: $text-mobile;
+
+        transform: translateX(-50%);
+
+        @include breakpoint(lg){
+          font-size: $text-tablet;
+        }
+      }
     }
   }
 }
