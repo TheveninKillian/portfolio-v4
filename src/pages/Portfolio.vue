@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import json from '../assets/portfolio.json'
 
-const position: string[] = ['left', 'top', 'right', 'bottom']
+const positions: string[] = ['left', 'top', 'right', 'bottom']
 
-const randomPosition = (max: number): string => {
-  const randomize: number = Math.floor(Math.random() * max)
-  const positionName: string = position[randomize]
+const randomPosition = (): string => {
+  const randomize: number = Math.floor(Math.random() * positions.length)
+  const positionName: string = positions[randomize]
   return positionName
 }
 </script>
@@ -18,9 +18,23 @@ const randomPosition = (max: number): string => {
 
     <div class="portfolio-grid">
       <div v-for="(item, key) in json.portfolio" :key="item.name" class="portfolio-grid__wrapper" data-aos="flip-left" :data-aos-delay="key * 100">
-        <div class="details">
-          <h2>{{ item.name }}</h2>
+        <div class="content">
+          <a :href="item.link">
+            <div class="content-img">
+              <img :src="item.img" :alt="`Image du projet ${item.name}`">
+            </div>
 
+            <div class="content-sub" :class="randomPosition()">
+              <div class="content-sub__back" :style="{background: item.color.background}" />
+
+              <div class="content-sub__infos" :style="{color: item.color.text}">
+                <h2>{{ item.name }}</h2>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="details">
           <p class="details-text">
             {{ item.description }}
           </p>
@@ -28,22 +42,6 @@ const randomPosition = (max: number): string => {
           <p>
             <span>Tech:</span> {{ item.technology }}
           </p>
-        </div>
-
-        <div class="content">
-          <a :href="item.link">
-            <div class="content-img">
-              <img :src="item.img" :alt="`Image du projet ${item.name}`">
-            </div>
-
-            <div class="content-sub" :class="randomPosition(4)">
-              <div class="content-sub__back" :style="{background: item.color.background}" />
-
-              <div class="content-sub__infos" :style="{color: item.color.text}">
-                Ouvrir
-              </div>
-            </div>
-          </a>
         </div>
       </div>
     </div>
@@ -58,8 +56,11 @@ h1{
   margin-bottom: 30px;
 }
 
-h2, span{
+span{
   color: $color-top;
+}
+
+h2{
   text-decoration: none;
 }
 .portfolio-grid{
@@ -85,20 +86,11 @@ h2, span{
     }
   }
 
-  .details{
-    &-text{
-      display: flex;
-      align-items: center;
-
-      height: 100px;
-    }
-  }
-
   .content{
     position: relative;
 
     height: 300px;
-    margin: 25px auto 0;
+    margin: 25px auto;
     width: 300px;
 
     border: 2px solid $color-top;
@@ -208,6 +200,15 @@ h2, span{
           font-size: $text-tablet;
         }
       }
+    }
+  }
+
+  .details{
+    &-text{
+      display: flex;
+      align-items: center;
+
+      height: 100px;
     }
   }
 }
