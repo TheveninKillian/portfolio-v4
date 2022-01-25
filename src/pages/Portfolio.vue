@@ -108,6 +108,10 @@ h1{
       transition: bottom 0.5s;
     }
 
+    &:hover .content{
+      filter: blur(1px);
+    }
+
     &:hover .sub-content.left{
       left: 0;
     }
@@ -132,6 +136,8 @@ h1{
 
     width: 100%;
     height: 100%;
+
+    transition: all .5s;
   }
 }
 
