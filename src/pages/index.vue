@@ -65,7 +65,7 @@ const { width } = useWindowSize()
         </div>
 
         <div data-aos="flip-down">
-          <h3>Framework et outils</h3>
+          <h3>Framework</h3>
 
           <ul class="skills-wrapper">
             <li>
@@ -76,6 +76,32 @@ const { width } = useWindowSize()
             <li>
               <Icon icon="logos:sass" />
               <span>SASS</span>
+            </li>
+
+            <li>
+              <Icon icon="logos:jest" />
+              <span>Jest</span>
+            </li>
+
+            <li v-if="false">
+              <Icon icon="logos:cypress" />
+              <span>Cypress</span>
+            </li>
+          </ul>
+        </div>
+
+        <div data-aos="flip-down">
+          <h3>Design et Tools</h3>
+
+          <ul class="skills-wrapper">
+            <li>
+              <Icon icon="grommet-icons:figma" />
+              <span>Figma</span>
+            </li>
+
+            <li>
+              <Icon icon="vscode-icons:file-type-photoshop" />
+              <span>Photoshop</span>
             </li>
 
             <li>
@@ -91,22 +117,6 @@ const { width } = useWindowSize()
             <li>
               <Icon icon="codicon:terminal-cmd" color="white" />
               <span>CMD</span>
-            </li>
-          </ul>
-        </div>
-
-        <div data-aos="flip-down">
-          <h3>Design</h3>
-
-          <ul class="skills-wrapper">
-            <li>
-              <Icon icon="grommet-icons:figma" />
-              <span>Figma</span>
-            </li>
-
-            <li>
-              <Icon icon="vscode-icons:file-type-photoshop" />
-              <span>Photoshop</span>
             </li>
           </ul>
         </div>
@@ -205,14 +215,14 @@ button {
   display: flex;
   flex-direction: column;
 
-  @include breakpoint(lg){
+  @include breakpoint(1440){
     flex-direction: row;
   }
 }
 
 .about,
 .skills{
-  @include breakpoint(lg){
+  @include breakpoint(1440){
     margin-left: $marge-all-min;
     margin-right: $marge-all-min;
     width: 50%;
@@ -300,7 +310,11 @@ button {
       svg{
         margin-bottom: 5px;
 
-        font-size: $h2-tablet;
+        font-size: $h2-mobile;
+
+        @include breakpoint(sm){
+          font-size: $h2-tablet;
+        }
 
         @include breakpoint(lg){
           font-size: $h2-desktop;
