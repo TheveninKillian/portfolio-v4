@@ -83,7 +83,7 @@ const { width } = useWindowSize()
               <span>Jest</span>
             </li>
 
-            <li v-if="false">
+            <li>
               <Icon icon="logos:cypress" />
               <span>Cypress</span>
             </li>
