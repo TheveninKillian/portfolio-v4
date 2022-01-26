@@ -3,17 +3,6 @@ describe('Operation on desktop', () => {
     cy.visit('/')
   })
 
-  it('Header to footer', () => {
-    cy.url()
-      .should('eq', 'http://localhost:3333/')
-
-    cy.scrollTo(0, 0)
-
-    cy.get('footer').scrollIntoView()
-
-    cy.pause()
-  })
-
   it('Page portfolio', () => {
     cy.contains('Portfolio').click()
 
